@@ -32,7 +32,10 @@ export default function Sample() {
     try {
       // Example backend endpoint (update to your actual API)
       console.log(formData)
-      const res = await axios.post("https://backenddemo-mu.vercel.app/api/Reg", formData);
+     const res = await axios.post("https://backenddemo-mu.vercel.app/api/Reg", formData, {
+  headers: { "Content-Type": "application/json" },
+});
+
       if (res.data.success) {
         setMessage("✅ Registration successful!");
       } else {
