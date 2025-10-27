@@ -139,7 +139,7 @@ const handleLoginButton = async () => {
           </p>
           <p className="mt-8 text-xs">
             Not a member?{" "}
-            <a href="#" className="font-semibold underline">
+            <a onClick={navigate("/reg")} className="font-semibold underline" >
               Sign up now
             </a>
           </p>
