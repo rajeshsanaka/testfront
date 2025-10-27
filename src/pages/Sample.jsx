@@ -3,9 +3,8 @@ import axios from "axios";
 
 export default function Sample() {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
-    phone: "",
     password: "",
   });
 
@@ -21,25 +20,27 @@ export default function Sample() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { name, email, phone, password } = formData;
+    const { username, email, password } = formData;
 
     // Simple validation
-    if (!name || !email || !phone || !password) {
+    if (!username || !email || !password) {
       setMessage("⚠️ Please fill in all fields");
       return;
     }
 
     try {
-      // Example backend endpoint (update to your actual API)
-      console.log(formData)
-     const res = await axios.post("https://backenddemo-mu.vercel.app/api/Reg", formData, {
-  headers: { "Content-Type": "application/json" },
-});
+      console.log(formData);
+
+      // 🔗 Replace with your actual deployed backend URL
+      const res = await axios.post(
+        "https://ssv-lyart.vercel.app/register",
+        formData
+      );
 
       if (res.data.success) {
         setMessage("✅ Registration successful!");
       } else {
-        setMessage("❌ Registration failed: " + res.data.message);
+        setMessage("❌ " + res.data.message);
       }
     } catch (error) {
       console.error(error);
@@ -54,9 +55,9 @@ export default function Sample() {
       <form style={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"
-          name="name"
-          placeholder="Enter your Name"
-          value={formData.name}
+          name="username"
+          placeholder="Enter your Username"
+          value={formData.username}
           onChange={handleChange}
           style={styles.input}
         />
@@ -66,15 +67,6 @@ export default function Sample() {
           name="email"
           placeholder="Enter your Email"
           value={formData.email}
-          onChange={handleChange}
-          style={styles.input}
-        />
-
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Enter your Phone Number"
-          value={formData.phone}
           onChange={handleChange}
           style={styles.input}
         />
