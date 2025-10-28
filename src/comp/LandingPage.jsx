@@ -135,6 +135,7 @@ const navigate=useNavigate();
           </button>
         </form>
       </section>
+      <Footer/>
 
     </div>
   );
